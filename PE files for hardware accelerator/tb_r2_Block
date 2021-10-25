@@ -1,0 +1,237 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity tb_r2_Block is
+end entity;
+
+architecture tb of tb_r2_Block is
+ 
+  signal A: std_logic_vector (7 downto 0);
+  signal B: std_logic_vector (7 downto 0);
+  signal C: std_logic_vector (7 downto 0);
+  signal D: std_logic_vector (7 downto 0);
+  signal code_word_1: std_logic_vector (2 downto 0); 
+  signal code_word_2: std_logic_vector (2 downto 0);
+  signal clk: std_logic;
+  signal nRst: std_logic;
+  signal output_block_1: std_logic_vector (7 downto 0);   
+  signal output_block_2: std_logic_vector (7 downto 0);
+  constant tclk: time := 20 ns;   
+
+  begin
+  dut: entity Work.r2_Block(struct)
+    port map (A => A, B => B, C => C, D => D, code_word_1 => code_word_1, code_word_2 => code_word_2, output_block_1 => output_block_1, output_block_2 => output_block_2,
+	clk => clk, nRst => nRst);
+
+ process       
+begin
+    clk <= '0';
+    wait for tclk/2;
+    clk <= '1';  
+    wait for tclk/2;
+end process ;
+               
+  process
+   constant period: time := 20 ns;  
+    begin
+
+  nRst <= '0';
+  A <= X"00";  
+  B <= X"00"; 
+code_word_1 <= "011";
+  C <= X"00";  
+  D <= X"00"; 
+code_word_2 <= "011";
+  wait for tclk*4;
+  wait until clk'event and clk='1';
+  nRst<='1';   
+  wait until clk'event and clk='1';
+  --wait until clk'event and clk='1';
+  -- Fin inicialización asíncrona
+
+        A <= X"43"; 
+        B <= X"23"; 
+        C <= X"15"; 
+        D <= X"03"; 
+
+       --for i in 0 to 253 loop
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+code_word_1 <= "100";
+code_word_2 <= "100";
+
+        A <= X"72"; 
+        B <= X"12"; 
+        C <= X"21"; 
+        D <= X"04"; 
+
+       --for i in 0 to 253 loop
+       wait until clk'event and clk='1'; 
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+code_word_1 <= "001";
+code_word_2 <= "001";
+        A <= X"12"; 
+        B <= X"05";
+        C <= X"12"; 
+        D <= X"08"; 
+ 
+
+       --for i in 0 to 253 loop
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+code_word_1 <= "010";
+code_word_2 <= "010";
+        A <= X"55"; 
+        B <= X"46"; 
+        C <= X"58"; 
+        D <= X"16"; 
+
+       --for i in 0 to 253 loop
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+
+code_word_1 <= "010";
+code_word_2 <= "010";
+        A <= X"25"; 
+        B <= X"15"; 
+        C <= X"25"; 
+        D <= X"06"; 
+
+       --for i in 0 to 253 loop
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';       
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';     
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+       wait until clk'event and clk='1';
+
+assert false 
+  report "done"
+  severity failure;
+
+    wait;
+  end process;
+end tb;

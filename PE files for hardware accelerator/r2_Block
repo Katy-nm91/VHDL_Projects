@@ -1,0 +1,39 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity r2_Block is 
+port( clk:	in std_logic;
+      nRst:	in std_logic;
+      A:        in std_logic_vector(7 downto 0);
+      B:        in std_logic_vector(7 downto 0);
+      C:        in std_logic_vector(7 downto 0);
+      D:        in std_logic_vector(7 downto 0);
+      code_word_1: in std_logic_vector(2 downto 0);
+      code_word_2: in std_logic_vector(2 downto 0);
+      output_block_1: buffer std_logic_vector (7 downto 0);
+      output_block_2: buffer std_logic_vector (7 downto 0)
+     
+);
+end entity;
+
+architecture struct of r2_Block  is
+
+begin	    
+  
+  Block_AB : entity work.block_AB(rtl)
+		port map( clk 		 => clk,
+		          nRst		 => nRst,
+			  A => A,
+			  B => B,                         			      
+		          code_word   => code_word_1,
+			  antilog_out => output_block_1);  
+
+  Block_CD : entity work.block_CD(rtl)
+		port map( clk 		 => clk,
+		          nRst		 => nRst,
+			  C => C,
+			  D => D,                         			      
+		          code_word2   => code_word_2,
+			  antilog_out2 => output_block_2); 
+
+end struct;
